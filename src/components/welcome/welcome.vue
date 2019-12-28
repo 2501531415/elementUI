@@ -1,11 +1,11 @@
 <template>
-<div class="profile">
-<h1>我是profile</h1>
+<div class="welcome">
+    <h1>欢迎来到后台管理系统</h1>
 </div>
 </template>
 <script>
 export default {
-name: 'profile'
+name: 'welcome'
 }
 </script>
 <style scoped>

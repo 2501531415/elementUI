@@ -9,7 +9,7 @@
                 <el-input prefix-icon="iconfont icon-user " v-model="formRule.username"></el-input>
             </el-form-item>
               <el-form-item prop="password">
-                <el-input prefix-icon="iconfont icon-3702mima" v-model="formRule.password" type="password"></el-input>
+                <el-input prefix-icon="iconfont icon-3702mima"  v-model="formRule.password" type="password"></el-input>
             </el-form-item>
              <el-form-item>
                 <el-button type="primary" @click="login">登录</el-button>
@@ -20,6 +20,7 @@
 </div>
 </template>
 <script>
+import {loginCheck} from '../network/login.js'
 export default {
 name: 'login',
 data(){
@@ -47,19 +48,24 @@ methods: {
         this.$refs.from.resetFields()
     },
     login(){
-        this.$refs.from.validate(async valid=>{
+        this.$refs.from.validate(valid=>{
             if(!valid) return;
-            const {data:res} = await this.$http.post("/login",this.formRule)
+            loginCheck(this.formRule.username,this.formRule.password).then(res=>{
             if(res.meta.status !=200) return this.$message.error('登录失败！');
             this.$message.success('登录成功！');
             window.sessionStorage.setItem('token',res.data.token)
             this.$router.push('/home')
+            })
         })
     }
 }
 }
 </script>
 <style scoped>
+.login{
+    background-color: #2b4b6b;
+    height: 100%;
+}
 .login_box{
     width: 585px;
     height: 450px;
