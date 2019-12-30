@@ -5,6 +5,7 @@
             <el-breadcrumb-item>用户管理</el-breadcrumb-item>
             <el-breadcrumb-item>用户列表</el-breadcrumb-item>
     </el-breadcrumb>
+    <!-- 卡片 -->
     <el-card>
         <el-row :gutter="20">
           <el-col :span="8">
@@ -38,7 +39,7 @@
         </el-table-column>
        </el-table>
        <!-- 分页 -->
-           <el-pagination
+    <el-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       :current-page="userDate.pagenum"
