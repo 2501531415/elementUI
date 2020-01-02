@@ -20,3 +20,6 @@ body ,
 .el-pagination{
    padding:10px 0px
 }
+.ql-editor{
+   min-height: 300px;
+}

@@ -274,7 +274,6 @@ methods: {
         });
     },
     tagClose(index,row){
-        console.log("aaaa")
         row.attr_vals.splice(index,1)
         submitEditParams(this.cat_id,row.attr_id,row.attr_name,this.activeName,row.attr_vals).then(res=>{
             if(res.meta.status !=200) return this.$message.error('删除参数失败')

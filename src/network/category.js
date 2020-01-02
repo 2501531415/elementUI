@@ -82,3 +82,39 @@ export function submitEditParams(id,attrId,name,sel,val){
         }
     })
 }
+
+// 获取商品列表
+export function getGoods(goods){
+    return request({
+        url:'/goods',
+        params:{
+            query:goods.query,
+            pagenum:goods.pagenum,
+            pagesize:goods.pagesize
+        }
+    })
+}
+// 删除商品
+export function removeGoods(id){
+    return request({
+        method:'delete',
+        url:`goods/${id}`
+    })
+}
+// 添加商品
+export function addGoods(addGoodsInfo){
+    return request({
+        method:'post',
+        url:'/goods',
+        data:{
+            goods_name:addGoodsInfo.goods_name,
+            goods_cat:addGoodsInfo.goods_cat,
+            goods_price:addGoodsInfo.goods_price,
+            goods_number:addGoodsInfo.goods_number,
+            goods_weight:addGoodsInfo.weight,
+            goods_introduce:addGoodsInfo.introduce,
+            pics:addGoodsInfo.pics,
+            attrs:addGoodsInfo.attrs
+        }
+    })
+}

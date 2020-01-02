@@ -8,7 +8,8 @@ const rights = ()=>import('../view/rights/rights.vue')
 const roles = ()=>import('../view/rights/roles.vue')
 const category = ()=>import('../view/category/category.vue')
 const params = ()=>import('../view/category/params.vue')
-const goods = ()=>import('../view/category/goods.vue')
+const goods = ()=>import('../view/category/goods/goods.vue')
+const addGoods = ()=>import('../view/category/goods/addGoods.vue')
 Vue.use(Router)
 
 const router = new Router({
@@ -23,7 +24,8 @@ const router = new Router({
             {path:'/roles',name:'roles',component:roles},
             {path:'/categories',name:'category',component:category},
             {path:'/params',name:'params',component:params},
-            {path:'/goods',name:'goods',component:goods}
+            {path:'/goods',name:'goods',component:goods},
+            {path:'/goods/addGoods',name:'addGoods',component:addGoods}
         ]
     }
     ],
