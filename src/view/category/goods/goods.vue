@@ -22,7 +22,11 @@
           <el-table-column label="商品名称" prop="goods_name" width="700px"></el-table-column>
           <el-table-column label="商品价格(元)" prop="goods_price"></el-table-column>
           <el-table-column label="商品重量" prop="goods_weight"></el-table-column>
-          <el-table-column label="创建时间" prop="add_time"  :formatter="dateFormat"></el-table-column>
+          <el-table-column label="创建时间">
+              <template slot-scope="scope">
+                <span>{{scope.row.add_time | showDate}}</span>
+              </template>
+          </el-table-column>
           <el-table-column label="操作">
               <template slot-scope="scope">
                   <el-button type="primary" icon="el-icon-edit"></el-button>
@@ -43,8 +47,8 @@
 </div>
 </template>
 <script>
+import {formatDate} from '../../../common/utils.js'
 import {getGoods,removeGoods} from '../../../network/category.js'
-import moment from 'moment'
 export default {
 name: 'goods',
 data () {
@@ -61,6 +65,12 @@ data () {
 created () {
     this.getGoods()
 },
+filters: {
+    showDate(value){
+        const date = new Date(value *1000)
+        return formatDate(date,'yyyy-MM-dd')
+    }
+},
 methods: {
     // 获取商品列表
     getGoods(){
@@ -72,12 +82,6 @@ methods: {
             this.total = res.data.total
         })
     },
-    // 时间格式化
-     dateFormat:function(row,column){
-        var date = row[column.property];
-        if(date == undefined){return ''};
-        return moment(date).format("YYYY-MM-DD HH:mm:ss")
-    },
     // 分页
     handleSizeChange(val){
         this.goodsInfo.pagesize = val
@@ -120,7 +124,7 @@ methods: {
             message: '已取消删除'
           });          
         });
-    }
+    },
 }
 }
 

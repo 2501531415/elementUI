@@ -10,6 +10,9 @@ const category = ()=>import('../view/category/category.vue')
 const params = ()=>import('../view/category/params.vue')
 const goods = ()=>import('../view/category/goods/goods.vue')
 const addGoods = ()=>import('../view/category/goods/addGoods.vue')
+const orders = ()=>import('../view/orders/orders.vue')
+const reports = ()=>import('../view/reports/reports.vue')
+
 Vue.use(Router)
 
 const router = new Router({
@@ -25,7 +28,9 @@ const router = new Router({
             {path:'/categories',name:'category',component:category},
             {path:'/params',name:'params',component:params},
             {path:'/goods',name:'goods',component:goods},
-            {path:'/goods/addGoods',name:'addGoods',component:addGoods}
+            {path:'/goods/addGoods',name:'addGoods',component:addGoods},
+            {path:'/orders',name:'orders',component:orders},
+            {path:'/reports',name:'reports',component:reports},
         ]
     }
     ],
